@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/validate-account/{email}',[AdminController::class, 'submitDefineAccess'])->name('submitDefineAccess');
 
     //departement
+
     Route::prefix('departement')->name('departement.')->group(function(){
         Route::get('/', [DepartementController::class, 'index'])->name('index');
         Route::get('/create', [DepartementController::class, 'create'])->name('create');

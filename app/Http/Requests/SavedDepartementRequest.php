@@ -34,6 +34,5 @@ class SavedDepartementRequest extends FormRequest
             'nom.unique'=>'le nom existe déjà',
             'nom.string'=> 'le nom doit être une chaîne de caractères'
         ];
-
     }
 }

@@ -22,7 +22,7 @@ class DepartementController extends Controller
     public function store(Departement $departement, SavedDepartementRequest $request)
     {
         $departement->nom = $request->nom;
-        $departement->save();  //sauvegarde en base
+        $departement->save();
         return redirect()->route('departement.index')->with('success', 'Département enregistrer avec succès');
     }
 
