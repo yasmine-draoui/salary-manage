@@ -61,4 +61,33 @@ This project helps companies manage employees, departments, administrators, and 
 ### 1️⃣ Clone repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/salary-management.git
+git clone https://github.com/yasmine-draoui/salary-manage.git
+```
+### 2️⃣ Install PHP dependencies
+
+```bash
+composer install
+```
+### 3️⃣ Install frontend dependencies
+```bash
+npm install
+```
+### 4️⃣ Configure environment file
+```bash
+cp .env.example .env
+```
+Update database configuration:
+```bash
+DB_DATABASE=rh_portal
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 6️⃣ Run database migrations
+```bash
+php artisan migrate
+```
+### 7️⃣ Start the development server
+```bash
+php artisan serve
+```
