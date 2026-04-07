@@ -83,6 +83,10 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+5️⃣ Generate application key
+```bash
+php artisan key:generate
+```
 ### 6️⃣ Run database migrations
 ```bash
 php artisan migrate
