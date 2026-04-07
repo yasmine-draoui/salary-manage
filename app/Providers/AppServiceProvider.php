@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
+use App\Models\Configuration;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        View::composer('*', function ($view) {
+
+            $appName = Configuration::where('type', 'APP_NAME')->first();
+
+            $view->with('appName', $appName);
+        });
     }
 }

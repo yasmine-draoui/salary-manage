@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SalaireGest</title>
+    <title>{{ $appName->value ?? 'SalaireGest' }}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="{{ asset('assets/images/app-logo.svg') }}">
+
 
     <!-- FontAwesome JS-->
     <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>

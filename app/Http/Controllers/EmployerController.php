@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\employer;
 use App\Models\departement;
 use App\Http\Requests\SaveEmployerRequest;
+use Exception;
 
 class EmployerController extends Controller
 {
@@ -66,6 +67,7 @@ class EmployerController extends Controller
 
     public function delete(Employer $employer)
     {
+        $employer->payments()->delete();
         $employer->delete();
         return redirect()->route('employer.index')->with('success', 'Employer supprimé');
     }

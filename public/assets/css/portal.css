@@ -52,3 +52,67 @@
 .icon-delete:hover {
     color: #b71c1c;
 }
+/* ================= RH ENTERPRISE DESIGN ================= */
+
+.rh-card-header{
+    padding:18px 24px;
+    background:#ffffff;
+    border-bottom:1px solid #e9ecef;
+}
+
+.rh-card-header h5{
+    font-weight:600;
+    margin:0;
+    font-size:16px;
+}
+
+.rh-card-header small{
+    color:#6c757d;
+}
+
+/* CARD */
+.app-card{
+    border-radius:10px;
+    border:1px solid #e6e9ed;
+}
+
+/* INPUT ENTERPRISE */
+.form-control{
+    height:38px !important;
+    font-size:14px;
+    border-radius:6px;
+}
+
+/* SELECT */
+.form-select{
+    height:38px;
+    font-size:14px;
+}
+
+/* LABEL RH */
+.form-label{
+    font-weight:600;
+    font-size:13px;
+    color:#344054;
+}
+
+/* FORM SPACING */
+.rh-form-row{
+    margin-bottom:18px;
+}
+.config-value{
+    background:#f5f7fa;
+    border:1px solid #e4e7ec;
+    padding:6px 14px;
+    border-radius:8px;
+    font-weight:500;
+}
+
+.app-table-hover tbody tr{
+    transition:all .2s ease;
+}
+
+.app-table-hover tbody tr:hover{
+    background:#f9fafb;
+    transform:scale(1.002);
+}

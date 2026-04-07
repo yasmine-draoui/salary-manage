@@ -1,217 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>Fiche de paie</title>
 
+<style>
 
+body{
+    font-family: DejaVu Sans, sans-serif;
+    background:#f5f6fa;
+    margin:0;
+    padding:30px;
+}
 
-    <style>
-        body {
-            font-family: sans-serif;
-        }
+/* ===== Container ===== */
 
-        .box-container {
-            width: 80%;
-            padding: 2rem;
-            border: 1px solid #f2f2f2;
-            border-radius: 5px;
-            background-color: #ffffff;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
+.payslip{
+    max-width:800px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,.05);
+}
 
-        .box-container .title {
-            font-weight: bold;
-            padding: 1rem;
-            border-bottom: 1px solid #f2f2f2;
-            background-color: #f2f2f2;
-        }
+/* ===== Header ===== */
 
-        .transaction-box {
-            margin-top: 1rem;
-        }
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:2px solid #eee;
+    padding-bottom:15px;
+    margin-bottom:25px;
+}
 
-        .transaction-box .item {
-            display: table;
-            width: 100%;
-            margin-bottom: 1rem;
-        }
+.header h2{
+    margin:0;
+    color:#2c3e50;
+}
 
-        .transaction-box .item>* {
-            display: table-cell;
-            vertical-align: middle;
-        }
+/* ===== Employee Info ===== */
 
-        .transaction-box .item> :first-child {
-            text-align-last: left;
-        }
+.info{
+    margin-bottom:25px;
+}
 
-        .transaction-box .item> :last-child {
-            text-align-last: right;
-            font-weight: bold;
-        }
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    border-bottom:1px dashed #eee;
+}
 
-        .transaction_details_box {
-            margin-top: 3rem;
-            border-radius: 5px;
-            display: table;
-            width: 100%;
-            margin-bottom: 3rem;
-        }
+.label{
+    color:#555;
+}
 
-        .transaction_details_box .left {
-            display: table;
-            margin-bottom: 1rem;
-            width: 100%;
-        }
+.value{
+    font-weight:bold;
+}
 
-        .transaction_details_box .left>* {
-            display: table-cell;
-            vertical-align: middle;
-        }
+/* ===== Table ===== */
 
+table{
+    width:100%;
+    border-collapse:collapse;
+}
 
+thead{
+    background:#2c3e50;
+    color:white;
+}
 
-        .transaction_details_box .left .item {
-            display: table;
-            width: 100%;
-            float: left;
-            margin-bottom: 1rem;
-        }
+th,td{
+    padding:10px;
+    text-align:left;
+}
 
-        .transaction_details_box .left .item>* {
-            display: table-cell;
-            vertical-align: middle;
+tbody tr:nth-child(even){
+    background:#f7f9fb;
+}
 
-            width: 100%;
-            margin-bottom: 1rem;
-        }
+/* ===== Total ===== */
 
-        .transaction_details_box .left .item> :first-child {
-            text-align: left;
-        }
+.total{
+    text-align:right;
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+    color:#27ae60;
+}
 
-        .transaction_details_box .left .item> :last-child {
-            text-align: right;
-        }
+/* ===== Footer ===== */
 
-        .transaction_details_box .right {
-            display: table;
-            width: 100%;
-        }
+.footer{
+    margin-top:40px;
+    text-align:center;
+    font-size:12px;
+    color:#999;
+}
 
-        .transaction_details_box .right table {
-            width: 100%;
-        }
-
-        .transaction_details_box .right .payment_tile {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        th {
-            background: #8a97a0;
-            color: #fff;
-        }
-
-        tr {
-            background: #f4f7f8;
-        }
-
-        tr:nth-child(even) {
-            background: #e8eeef;
-        }
-
-        th,
-        td {
-            padding: 0.5rem;
-        }
-
-        .single_item .value {
-            font-weight: bold;
-        }
-    </style>
-
-
-
+</style>
 </head>
 
 <body>
-    <div class="box-container">
 
-        <div class="title">
-            <b>Fiche de paie</b>
+<div class="payslip">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>Fiche de paie</h2>
+        <div>
+            {{$fullPaymentInfo->month}} / {{$fullPaymentInfo->year}}
+        </div>
+    </div>
+
+    <!-- EMPLOYEE INFO -->
+    <div class="info">
+
+        <div class="info-row">
+            <span class="label">Identifiant</span>
+            <span class="value">EMP{{$fullPaymentInfo->employer->id}}</span>
         </div>
 
-        <div class="transaction-box">
-
-
-            <div class="item">
-                <div class="label">Identifiant employer:</div>
-                <div class="value">Emp{{$fullPaymentInfo->employer->id}}</div>
-            </div>
-            <div class="item">
-                <div class="label">Nom & prénom:</div>
-                <div class="value">{{$fullPaymentInfo->employer->nom}} {{$fullPaymentInfo->employer->prenom}} ({{$fullPaymentInfo->employer->email}})</div>
-            </div>
-            <div class="item">
-                <div class="label">Département:</div>
-                <div class="value">{{$fullPaymentInfo->employer->departement->nom}}</div>
-            </div>
-            <div class="item">
-                <div class="label">Mois & Année:</div>
-                <div class="value">{{$fullPaymentInfo->month}} / {{$fullPaymentInfo->year}} </div>
-            </div>
-
-
-
+        <div class="info-row">
+            <span class="label">Nom & Prénom</span>
+            <span class="value">
+                {{$fullPaymentInfo->employer->nom}}
+                {{$fullPaymentInfo->employer->prenom}}
+            </span>
         </div>
 
-        <div class="last_item">
+        <div class="info-row">
+            <span class="label">Email</span>
+            <span class="value">{{$fullPaymentInfo->employer->email}}</span>
+        </div>
 
-            <div class="title"> Détails du paiement
-            </div>
-            <div class="transaction_details_box">
-
-                <div class="right">
-
-                    <table>
-                        <thead>
-                            <th>
-                                Date
-                            </th>
-                            <th>Montant</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{$fullPaymentInfo->launch_date}}</td>
-                                <td>{{$fullPaymentInfo->amount}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="single_item"> <span>Total</span>
-                                        <span class="value">{{$fullPaymentInfo->amount}} DZD</span>
-                                    </div>
-                                </td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="info-row">
+            <span class="label">Département</span>
+            <span class="value">
+                {{$fullPaymentInfo->employer->departement->nom}}
+            </span>
         </div>
 
     </div>
-</body>
 
+    <!-- PAYMENT TABLE -->
+    <table>
+        <thead>
+            <tr>
+                <th>Date paiement</th>
+                <th>Montant</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{$fullPaymentInfo->launch_date}}</td>
+                <td>{{$fullPaymentInfo->amount}} DZD</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total">
+        Total : {{$fullPaymentInfo->amount}} DZD
+    </div>
+
+    <div class="footer">
+        Document généré automatiquement — SalaireGest
+    </div>
+
+</div>
+
+</body>
 </html>

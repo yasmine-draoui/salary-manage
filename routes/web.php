@@ -12,7 +12,7 @@ use App\Http\Controllers\PaymentController;
 //authetification
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/', [AuthController::class, 'handlelogin'])->name('handlelogin');
-
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 

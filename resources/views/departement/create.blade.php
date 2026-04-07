@@ -2,52 +2,96 @@
 
 @section('content')
 
-	    <div class="app-content pt-3 p-md-3 p-lg-4">
-		    <div class="container-xl">
-			    <h1 class="app-page-title">Département</h1>
-			    <hr class="mb-4">
-                <div class="row g-4 settings-section">
-	                <div class="col-12 col-md-4">
-		                <h3 class="section-title">Ajout</h3>
-		                <div class="section-intro">Ajouter un nouveau département</div>
-	                </div>
-	                <div class="col-12 col-md-8">
-		                <div class="app-card app-card-settings shadow-sm p-4">
+<div class="app-content p-md-4 p-lg-4">
+<div class="container-xl">
 
-						    <div class="app-card-body">
-							    <form class="settings-form" method="POST" action="{{ route('departement.store') }}">
-                                    @method("POST")
-                                    @csrf
-								    <div class="mb-3">
-									    <label for="setting-input-1" class="form-label">Nom du département<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info.">
-                                            </span></label>
-									    <input type="text" class="form-control" id="setting-input-1" name="nom" placeholder="Entrer le nom du département" required>
-                                        @error('nom')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-									</div>
+    {{-- ================= PAGE HEADER ================= --}}
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-									<button type="submit" class="btn app-btn-primary">Enregistrer</button>
-							    </form>
-						    </div><!--//app-card-body-->
+        <div>
+            <h1 class="app-page-title mb-1">Départements</h1>
+            <p class="text-muted mb-0">
+                Gestion de la structure organisationnelle de l'entreprise
+            </p>
+        </div>
 
-						</div><!--//app-card-->
-	                </div>
-                </div><!--//row-->
+        <a href="{{ route('departement.index') }}"
+           class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i>
+            Retour
+        </a>
 
-			    <hr class="my-4">
-		    </div><!--//container-fluid-->
-	    </div><!--//app-content-->
+    </div>
 
 
+    {{-- ================= FORM CARD ================= --}}
+<div class="app-card shadow-sm">
 
+    {{-- HEADER --}}
+    <div class="rh-card-header">
+        <div>
+            <h5>Informations du département</h5>
+            <small>Créer un nouveau département organisationnel</small>
+        </div>
+    </div>
 
-    <!-- Javascript -->
-    <script src="assets/plugins/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    {{-- BODY --}}
+    <div class="app-card-body p-4">
 
-    <!-- Page Specific JS -->
-    <script src="assets/js/app.js"></script>
+        <form method="POST" action="{{ route('departement.store') }}">
+            @csrf
+
+            <div class="row">
+
+                <div class="col-md-6 rh-form-row">
+                    <label class="form-label">Nom du département</label>
+                    <input type="text"
+                           name="nom"
+                           class="form-control"
+                           placeholder="Ressources Humaines">
+                </div>
+
+                <div class="col-md-3 rh-form-row">
+                    <label class="form-label">Code</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="RH01">
+                </div>
+
+                <div class="col-md-3 rh-form-row">
+                    <label class="form-label">Responsable</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Nom responsable">
+                </div>
+
+                <div class="col-12 rh-form-row">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+
+            </div>
+
+            <div class="border-top pt-3 d-flex justify-content-end gap-2">
+
+                <a href="{{ route('departement.index') }}"
+                   class="btn btn-light">
+                    Annuler
+                </a>
+
+                <button class="btn app-btn-primary">
+                    Enregistrer
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
 @endsection

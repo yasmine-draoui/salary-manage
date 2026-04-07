@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Notifications\SendEmailToAdminAfterRegistrationNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\submitDefineAccessRequest;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller

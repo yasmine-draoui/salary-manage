@@ -1,63 +1,106 @@
 @extends('layouts.template')
 
 @section('content')
+    <div class="app-content pt-3 p-md-4 p-lg-4">
+        <div class="container-xl">
 
-	    <div class="app-content pt-3 p-md-3 p-lg-4">
-		    <div class="container-xl">
-			    <h1 class="app-page-title">Administrateurs</h1>
-			    <hr class="mb-4">
-                <div class="row g-4 settings-section">
-	                <div class="col-12 col-md-4">
-		                <h3 class="section-title">Ajout</h3>
-		                <div class="section-intro">Ajouter un nouveau administrateur</div>
-	                </div>
-	                <div class="col-12 col-md-8">
-		                <div class="app-card app-card-settings shadow-sm p-4">
+            {{-- HEADER --}}
+            <div class="mb-4">
+                <h1 class="app-page-title mb-1">Nouvel Administrateur</h1>
+                <small class="text-muted">
+                    Création d’un compte administrateur système
+                </small>
+            </div>
 
-						    <div class="app-card-body">
-							    <form class="settings-form" method="POST" action="{{ route('admin.store') }}">
-                                    @method("POST")
-                                    @csrf
-								    <div class="mb-3">
-									    <label for="setting-input-1" class="form-label">Nom Complet<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info.">
-                                            </span></label>
-									    <input type="text" class="form-control" id="setting-input-1" name="name" placeholder="Entrer le nom complet" required>
-                                        @error('name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-									</div>
-                                    <div class="mb-3">
-									    <label for="setting-input-1" class="form-label">Email<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info.">
-                                            </span></label>
-									    <input type="text" class="form-control" id="setting-input-1" name="email" placeholder="Entrer l'adresse email" required>
-                                        @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-									</div>
+            <div class="row justify-content-center">
 
-									<button type="submit" class="btn app-btn-primary">Enregistrer</button>
-							    </form>
-						    </div><!--//app-card-body-->
+                <div class="col-lg-7">
 
-						</div><!--//app-card-->
-	                </div>
-                </div><!--//row-->
+                    <div class="app-card shadow-sm border-0">
 
-			    <hr class="my-4">
-		    </div><!--//container-fluid-->
-	    </div><!--//app-content-->
+                        {{-- CARD HEADER --}}
+                        <div class="app-card-header bg-light border-bottom py-3">
+                            <strong>Informations administrateur</strong>
+                        </div>
 
+                        <div class="app-card-body p-4">
 
+                            <form method="POST" action="{{ route('admin.store') }}">
+                                @csrf
 
+                                {{-- NOM --}}
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">
+                                        Nom complet
+                                    </label>
 
-    <!-- Javascript -->
-    <script src="assets/plugins/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+                                    <input type="text" name="name"
+                                        class="form-control form-control-sm @error('name') is-invalid @enderror"
+                                        placeholder="Ex : Nom Prénom" value="{{ old('name') }}">
 
-    <!-- Page Specific JS -->
-    <script src="assets/js/app.js"></script>
+                                    @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                {{-- EMAIL --}}
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">
+                                        Adresse Email
+                                    </label>
+
+                                    <input type="email" name="email"
+                                        class="form-control form-control-sm @error('email') is-invalid @enderror"
+                                        placeholder="admin@entreprise.dz" value="{{ old('email') }}">
+
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                {{-- PASSWORD --}}
+                                <div class="mb-4">
+                                    <label class="form-label small fw-semibold">
+                                        Mot de passe
+                                    </label>
+
+                                    <input type="password" name="password"
+                                        class="form-control form-control-sm @error('password') is-invalid @enderror"
+                                        placeholder="********">
+
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                {{-- ACTIONS --}}
+                                <div class="d-flex justify-content-end gap-2">
+
+                                    <a href="{{ route('admin.index') }}" class="btn btn-light">
+                                        Annuler
+                                    </a>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-check-circle me-1"></i>
+                                        Enregistrer
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection

@@ -1,0 +1,16 @@
+.config-value{
+    background:#f5f7fa;
+    border:1px solid #e4e7ec;
+    padding:6px 14px;
+    border-radius:8px;
+    font-weight:500;
+}
+
+.app-table-hover tbody tr{
+    transition:all .2s ease;
+}
+
+.app-table-hover tbody tr:hover{
+    background:#f9fafb;
+    transform:scale(1.002);
+}
